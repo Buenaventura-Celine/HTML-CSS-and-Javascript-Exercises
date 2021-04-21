@@ -1,0 +1,95 @@
+<html>
+<head>
+    <title>JS - Exercise 5</title>
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel = "stylesheet" href = "style_5.css">
+</head>
+<body style="background-color: turquoise">
+    <div class = "navigation_section">
+        <br><br><br><br>
+        <a href="exercise_1.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 1</a>
+        <a href="exercise_2.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 2</a>
+        <a href="exercise_3.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 3</a>
+        <a href="exercise_4.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 4</a>
+        <a href="exercise_5.html" class="active"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 5</a>
+        <a href="exercise_6.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 6</a>
+        <a href="../../index.html"><i class="fa fa-arrow-left" aria-hidden="true"></i>Return to main menu</a>
+    </div>
+    <div class="content">
+        <div class="wrapper">
+            <div class = "exercise">
+                <br>
+                <p style="text-align:center">A JavaScript application 
+                    that will allow the user to enter telephone number and
+                    postal code. The application should test if the telephone
+                    number and postal code in Philippine setting is valid in 
+                    terms of format.</p><br>
+                <label>&nbsp;&nbsp;Telephone Number(starts with "09" or "639", and must be 11-digit number)</label>
+                <input type="text" id="telephone_number"></input><br><br>
+                <label>&nbsp;&nbsp;Postal Code(must be 4-digit number)</label>
+                <input type="text" id="postal_code"></input><br><br>
+                
+                <button onclick="myFunction()" class="button">Verify it now!</button>
+                <br><br>
+    
+                <p id="valid_telephone"></p>
+                <p id="valid_postal"></p>
+                <p id="age"></p>
+                <br>
+            </div>
+        </div>
+    </div>
+<script language= "JavaScript">
+    function myFunction(){
+        var telephone_number= document.getElementById("telephone_number").value;
+        var postal_code = document.getElementById("postal_code").value;
+        var length_telephone = telephone_number.length;
+        var length_postal = postal_code.length;
+        var has_letters = /[a-zA-Z]/g;
+        var has_characters = /[ `!@#$%^&*()_\-=\[\]{};':"\\|,.<>\/?~]/;
+        var has_characters_postal = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+        var checker_telephone;
+        var checker_postal;
+    
+        /*validation process for telephone number*/
+        if(has_letters.test(telephone_number) || has_characters.test(telephone_number)){
+            /*if letters and special characters are found*/
+            checker_telephone = false;
+        }else{
+            if ((length_telephone == 11 && telephone_number.charAt(0) == '0' && telephone_number.charAt(1) == '9') || 
+            (length == 12 && telephone_number.charAt(0) == '6' && telephone_number.charAt(1) == '3'
+            && telephone_number.charAt(2) == '9') ||(length == 13 && telephone_number.charAt(0) == '+' && 
+            telephone_number.charAt(1) == '6'&& telephone_number.charAt(2) == '3' && telephone_number.charAt(3) == '9'))
+            {
+                checker_telephone= true;
+            }else{
+                checker_telephone = false;
+            }
+        }
+
+        /*validation process for postal code*/
+        if(has_letters.test(postal_code) || has_characters_postal.test(postal_code)){
+            /*if letters and special characters are found*/
+            checker_postal = false;
+        }else{
+            if(length_postal == 4){
+                checker_postal = true;
+            }else{
+                checker_postal = false;
+            }
+        }
+
+        if(checker_telephone == true){
+            document.getElementById("valid_telephone").innerHTML = ("**Valid Telephone Number**");
+        }else{
+            document.getElementById("valid_telephone").innerHTML = ("**Invalid Telephone Number**");
+        }
+        if(checker_postal == true){
+            document.getElementById("valid_postal").innerHTML = ("**Valid Postal Code**");
+        }else{
+            document.getElementById("valid_postal").innerHTML = ("**Invalid Postal Code**");
+        }
+    }
+</script>
+</body>
+</html>

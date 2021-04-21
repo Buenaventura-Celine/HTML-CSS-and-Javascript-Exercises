@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>JS - Exercise 3</title>
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel = "stylesheet" href = "style_3.css">
+</head>
+<body style="background-color: turquoise">
+    <div class = "navigation_section">
+        <br><br><br><br>
+        <a href="exercise_1.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 1</a>
+        <a href="exercise_2.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 2</a>
+        <a href="exercise_3.html" class="active"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 3</a>
+        <a href="exercise_4.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 4</a>
+        <a href="exercise_5.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 5</a>
+        <a href="exercise_6.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 6</a>
+        <a href="../../index.html"><i class="fa fa-arrow-left" aria-hidden="true"></i>Return to main menu</a>
+    </div>
+    <div class="content">
+        <div class="wrapper">
+            <div class = "exercise">
+                <br>
+                <p style="text-align:center">A JavaScript application that will read in a number of hours, 
+                    minutes, and seconds. The application will convert the inputs to the equivalent number 
+                    of seconds only.</p><br>
+                <label>&nbsp;&nbsp;Number of hour/s:</label>
+                <input type="text" id="hours"></input><br><br>
+                <label>&nbsp;&nbsp;Number of minute/s:</label>
+                <input type="text" id="minutes"></input><br><br>
+                <label>&nbsp;&nbsp;Number of second/s:</label>
+                <input type="text" id="seconds"></input><br><br>
+    
+                <button onclick="myFunction()" class="button">Calculate!</button>
+                <br><br>
+    
+                <p id="totalseconds"></p>
+                <br>
+            </div>
+        </div>
+    </div>
+<script language= "JavaScript">
+    function myFunction(){
+        var hours_x = document.getElementById("hours").value;
+        var minutes_x = document.getElementById("minutes").value;
+        var seconds_x = document.getElementById("seconds").value;
+
+        var hours = parseInt(hours_x);
+        var minutes = parseInt(minutes_x);
+        var seconds = parseInt(seconds_x);
+
+        if (hours >= 0 && minutes >= 0 && seconds >= 0){
+            var total_seconds = (hours * 3600) + (minutes * 60) + seconds;
+            document.getElementById("totalseconds").innerHTML = ("Total number of seconds: " + total_seconds);
+        }else{
+            alert("Try Again. Please enter a valid input");
+        }
+    }
+    
+    
+</script>
+</body>
+</html>

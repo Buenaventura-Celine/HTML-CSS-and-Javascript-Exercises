@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS - Exercise 6</title>
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel = "stylesheet" href = "style_6.css">
+</head>
+<body style="background-color: turquoise">
+    <div class = "navigation_section">
+        <br><br><br><br>
+        <a href="exercise_1.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 1</a>
+        <a href="exercise_2.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 2</a>
+        <a href="exercise_3.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 3</a>
+        <a href="exercise_4.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 4</a>
+        <a href="exercise_5.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 5</a>
+        <a href="exercise_6.html" class="active"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 6</a>
+        <a href="../../index.html"><i class="fa fa-arrow-left" aria-hidden="true"></i>Return to main menu</a>
+    </div>
+    <div class="content">
+        <div class="wrapper">
+            <div class="exercise">
+                <br>
+                <p style="text-align:center">A JavaScript application that will permit the user to input credit 
+                    cardholder’s name, cardholder’s number, type of credit card (VISA/Master/JCB) and expiry date 
+                    (month and year). The application should test if the information entered for the credit card
+                    number and expiry date are valid in terms of format.</p><br>
+                <input type="text" id="Lastname" placeholder="Last Name"><br>
+                <input type="text" id="Firstname" placeholder="First Name"><br>
+                <input type="text" id="Middlename" placeholder="Middle Name"><br>
+                <input type="text" id="Cardtype" placeholder="Type of Credit Card (VISA/MASTERCARD/JCB) "><br>
+                <input type="text" id="Cardnumber" placeholder="Card Number (must be 16 digits)"><br>
+                <input type="text" id="Expiry_Month" placeholder="Month"><br>
+                <input type="text" id="Expiry_Year" placeholder="Year"><br>
+                <button onclick="myFunction()" class="button">Check the validity</button>
+                <br>     
+    
+                <p id="invalid"></p>
+                <p id="name"></p>
+                <p id="card_type"></p>
+                <p id="card_number"></p>
+                <p id="expiry_date"></p>
+                <p id="card_validity"></p>
+                <p id="card_type_validity"></p>
+                <p id="card_number_validity"></p>
+                <p id="expiry_date_validity"></p>
+                <br><br>
+            </div>
+        </div>
+    </div>
+<script>
+function myFunction() {
+  var last_name = document.getElementById("Lastname").value;
+  var middle_name = document.getElementById("Middlename").value;
+  var first_name = document.getElementById("Firstname").value;
+  
+  /*Type of Credit Card and Credit Card Number*/
+  var card_type = document.getElementById("Cardtype").value;
+  var card_type_string = card_type.toUpperCase();
+  var card_type_checker;
+  if(card_type_string == "VISA" || card_type_string == "MASTERCARD" || card_type_string == "JCB"){
+        card_type_checker = true;
+        var card_number = document.getElementById("Cardnumber").value;
+        var length = card_number.length;
+        var has_letters = /[a-zA-Z]/g;
+        var has_characters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+        var card_number_checker;
+        if (has_letters.test(card_number) || has_characters.test(card_number)){
+            /*if letters and special characters are found*/
+            card_number_checker = false;
+        }else{
+            if (length == 16){
+                card_number_checker = true;
+                /*Expiration Date*/
+                    var expiry_month1 = document.getElementById("Expiry_Month").value;
+                    var expiry_year1 = document.getElementById("Expiry_Year").value;
+                    var expiry_month = parseInt(expiry_month1);
+                    var expiry_year = parseInt(expiry_year1);
+                    var current_time = new Date();
+                    var current_year1 = current_time.getFullYear();
+                    var current_month1 = current_time.getMonth();
+                    var current_month = parseInt(current_month1) + 1;
+                    var current_year = parseInt(current_year1);
+                    var expired, expiry_date_checker;
+
+                    if(expiry_month > 0 || expiry_month < 12 || expiry_year > 0){
+                        expiry_date_checker = true;
+                    if (current_year > expiry_year){
+                        expired = true;
+                    }else if (current_year == expiry_year){
+                        if (current_month > expiry_month){
+                            expired = true;
+                        }else{
+                            expired = false;
+                        }
+                    }else{
+                            expired = false;
+                         }
+                    }
+            }else{
+                card_number_checker = false;
+            }
+        }
+    }else{
+        card_type_checker = false;
+     }
+  
+
+    if (expired == true){
+        document.getElementById("expiry_date_validity").innerHTML = "Expired Card";
+    }
+    if (card_type_checker == false){
+        document.getElementById("card_type_validity").innerHTML = "Invalid Type of Card";
+    }
+    if (card_number_checker == false){
+        document.getElementById("card_number_validity").innerHTML = "Invalid Card Number";
+    }
+
+document.getElementById("name").innerHTML = "Cardholder's Name: " + first_name + " " + middle_name + " " + last_name;
+document.getElementById("card_number").innerHTML = "Cardholder's Number: " + card_number;
+document.getElementById("card_type").innerHTML = "Type of Credit Card: " + card_type_string;
+document.getElementById("expiry_date").innerHTML = "Expiration Date: " + expiry_month + "/" + expiry_year; 
+if(card_type_checker == true && card_number_checker == true && expired == false){ 
+    document.getElementById("card_validity").innerHTML = "***Card Valid***";  
+}else{
+    document.getElementById("card_validity").innerHTML = "***Invalid Card***";
+}
+
+}
+</script>
+</body>
+</html>

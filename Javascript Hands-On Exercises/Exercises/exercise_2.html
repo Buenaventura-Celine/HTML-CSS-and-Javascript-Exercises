@@ -1,0 +1,93 @@
+<html>
+<head>
+    <title>JS - Exercise 2</title>
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel = "stylesheet" href = "style_2.css">
+</head>
+<body style="background-color: turquoise">
+    <div class = "navigation_section">
+        <br><br><br><br>
+        <a href="exercise_1.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 1</a>
+        <a href="exercise_2.html" class="active"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 2</a>
+        <a href="exercise_3.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 3</a>
+        <a href="exercise_4.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 4</a>
+        <a href="exercise_5.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 5</a>
+        <a href="exercise_6.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 6</a>
+        <a href="../../index.html"><i class="fa fa-arrow-left" aria-hidden="true"></i>Return to main menu</a>
+    </div>
+    <div class="content">
+        <div class = "wrapper">
+            <div class="exercise">
+                <p style="text-align:center"> XYZ Company gives an additional mid-year bonus to its employees every year. 
+                    The amount depends on the number of years of service as enumerated below:</p>
+                <table align="center">
+                    <tr>
+                        <th>Years of Service</th>
+                        <th>Amount of Mid-Year Bonus</th>
+                    </tr>
+                    <tr>
+                        <td>1 - 5 years</td>
+                        <td>50% of monthly salary</td>
+                    </tr>
+                    <tr>
+                        <td>6 - 15 years</td>
+                        <td>75% of monthly salary</td>
+                    </tr>
+                    <tr>
+                        <td>16 and above</td>
+                        <td>100% of monthly salary</td>
+                    </tr>
+                </table><br><br>
+                <label>&nbsp;&nbsp;Number of year of service</label>
+                <input type="text" id="number_year"></input><br><br>
+                <label>&nbsp;&nbsp;Amount of Monthly Salary</label>
+                <input type="text" id="amount_salary"></input><br><br>
+                <button onclick="myFunction()" class="button">Check my Mid-year Bonus</button>
+    
+                <br><br>
+                <p id="yearsofservice" ></p>
+                <p id="regularsalary"></p>
+                <p id="midyearbonus"></p>
+                <br>
+            </div>
+        </div>
+    </div>
+<script language="JavaScript">
+    function myFunction(){
+        var number_year = document.getElementById("number_year").value;
+        var amount_salary = document.getElementById("amount_salary").value;
+    
+        var year = parseInt(number_year);
+        var salary = parseInt(amount_salary);
+        var bonus, final_salary, checker;
+    
+        if(year > 0 && salary > 0){
+            checker = true;
+        }else{
+            checker = false;
+        }
+
+        if (checker){
+
+            if (year >= 0 && year < 6 ){
+                bonus = salary * 0.5;
+            }
+            else if (year > 5 && year < 16){
+                bonus = salary * 0.75;
+            }
+            else{
+                bonus = salary;
+            }
+
+            document.getElementById("yearsofservice").innerHTML = ("Years of Service: " + year);
+            document.getElementById("regularsalary").innerHTML = ("Regular Salary: " + "P" + salary + ".00");
+            document.getElementById("midyearbonus").innerHTML = ("Mid-year Bonus: " + "P" + bonus + ".00");
+        }else{
+            alert("Try Again. Please enter a valid input");
+        }
+    }
+    
+    
+</script>
+</body>
+</html>

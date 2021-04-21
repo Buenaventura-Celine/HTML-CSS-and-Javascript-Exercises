@@ -1,0 +1,156 @@
+body {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), 
+        url("images/background.jpg") center center no-repeat;
+        background-size: cover;
+    }
+@font-face {
+        font-family: Montserrat Light;
+        src: url("fonts/Cooper-Black.otf");
+    }
+      
+h1 {
+        font-family: "Cooper Black", serif;
+        font-size: 50px;
+        text-align: center;
+        color: whitesmoke;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+        border-bottom: 5px;
+    }
+
+.back{
+        position: absolute;
+        top: 5%;
+        right: 5%;
+      }
+
+.back a{
+        font-size: 20px;
+        color: #fff;
+        display: block;
+        width: 100%;
+        line-height: 36px;
+        text-decoration: none;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        box-sizing: border-box;
+        transition: 0.3s;
+      }
+      
+.back a:hover{
+        background: #C5C6C7;
+        color: white;
+}
+.p-icon {
+        font-family: "Cooper Black", serif;
+        font-size: 25px;
+        color: whitesmoke;
+        position: absolute;
+        left: 5%;
+        margin-top: 0px;
+        padding-top: 0px;
+        border-top: 0px;
+    }
+
+.p-heading {
+        font-family: "ITC Franklin Gothic"; 
+        font-size: 24px; 
+        font-style: normal; 
+        font-variant: normal; 
+        text-align: center;
+        color:whitesmoke;
+        border-top: 0px;
+        padding-top: 0px;
+        margin-top: 0px;
+    }
+
+.button {
+        display: inline-block;
+        padding: 1.375rem 2.125rem 1.375rem 2.125rem;
+        border: 0.125rem solid #14bf98;
+        border-radius: 0.25rem;
+        background-color: #14bf98;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        text-decoration: none;
+        transition: all 0.2s;
+        position: absolute;
+        top: 75%;
+        left: 44%;
+    }
+
+.button:hover {
+        background-color: transparent;
+        color: #14bf98;
+        text-decoration: none;  
+    }
+
+.flip-box {
+        background-color: transparent;
+        width: 700px;
+        height: 300px;
+        perspective: 1000px; 
+        position: absolute;
+        top: 25%;
+        left: 25%;
+    }
+  
+.flip-box-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+  
+.flip-box:hover .flip-box-inner {
+        transform: rotateY(180deg);
+    }
+  
+.flip-box-front, .flip-box-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+    }
+    
+.flip-box-back {
+        font-family: "ITC Franklin Gothic"; 
+        font-size: 24px; 
+        font-style: normal; 
+        font-variant: normal; 
+        color: white;
+        text-align: left;
+        border: 5px solid#111111;
+        border-radius: 20px;
+        background-color:#111111;
+        transform: rotateY(180deg);
+    }
+
+table {
+        border-collapse: collapse;
+        width: 90%;
+        height: 90%;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+    }
+    
+td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    
+tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+tr:nth-child(odd) {
+        background-color: #14bf98;
+    }

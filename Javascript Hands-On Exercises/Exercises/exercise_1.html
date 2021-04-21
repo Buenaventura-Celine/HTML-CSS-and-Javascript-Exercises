@@ -1,0 +1,96 @@
+<html>
+<head>
+    <title>JS - Exercise 1</title>
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel = "stylesheet" href = "style_1.css">
+</head>
+<body style="background-color: turquoise">
+    <div class = "navigation_section">
+        <br><br><br><br>
+        <a href="exercise_1.html" class="active"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 1</a>
+        <a href="exercise_2.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 2</a>
+        <a href="exercise_3.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 3</a>
+        <a href="exercise_4.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 4</a>
+        <a href="exercise_5.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 5</a>
+        <a href="exercise_6.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 6</a>
+        <a href="../../index.html"><i class="fa fa-arrow-left" aria-hidden="true"></i>Return to main menu</a>
+    </div>
+    <div class="content">
+        <div class="exercise">
+            <p style="text-align:center">An HTML document with JavaScript code that permits the 
+                user to input a number for 0 to 9 and will change the color 
+                of the background as listed below:</p>
+            <table align="center">
+                <tr>
+                    <th>Number</th>
+                    <th>Color</th>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>Black</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Blue</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Green</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Cyan</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Red</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Magenta</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Gray</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Brown</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>White</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Yellow</td>
+                </tr>
+            </table>          
+            <input type="text" id="color_number" placeholder="Enter the number of the color you want"
+                style="text-align:center;">
+            <button onclick="myFunction()" class="button">Try it</button>
+        <br>
+        </div>
+    </div>
+<script language="JavaScript">
+function myFunction() {
+    var color_number = document.getElementById("color_number").value;
+    var color = parseInt(color_number);
+
+    switch(color){
+        case 0: document.body.style.backgroundColor = 'black'; break;
+        case 1: document.body.style.backgroundColor = 'blue'; break;
+        case 2: document.body.style.backgroundColor = 'green'; break;
+        case 3: document.body.style.backgroundColor = 'cyan'; break;
+        case 4: document.body.style.backgroundColor = 'red'; break;
+        case 5: document.body.style.backgroundColor = 'magenta'; break;
+        case 6: document.body.style.backgroundColor = 'gray'; break;
+        case 7: document.body.style.backgroundColor = 'brown'; break;
+        case 8: document.body.style.backgroundColor = 'white'; break;
+        case 9: document.body.style.backgroundColor = 'yellow'; break;
+        default: alert("Try Again. Please enter a valid input"); break;
+    }
+ }
+</script>
+</body>
+</html>

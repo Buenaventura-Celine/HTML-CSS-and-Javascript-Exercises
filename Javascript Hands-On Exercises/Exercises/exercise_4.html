@@ -1,0 +1,103 @@
+<html>
+<head>
+    <title>JS - Exercise 4</title>
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel = "stylesheet" href = "style_4.css">
+</head>
+<body style="background-color: turquoise">
+    <div class = "navigation_section">
+        <br><br><br><br>
+        <a href="exercise_1.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 1</a>
+        <a href="exercise_2.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 2</a>
+        <a href="exercise_3.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 3</a>
+        <a href="exercise_4.html" class="active"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 4</a>
+        <a href="exercise_5.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 5</a>
+        <a href="exercise_6.html"><i class="fa fa-desktop" aria-hidden="true"></i>Exercise 6</a>
+        <a href="../../index.html"><i class="fa fa-arrow-left" aria-hidden="true"></i>Return to main menu</a>
+    </div>
+    <div class="content">
+        <div class="wrapper">
+            <div class = "exercise">
+                <br>
+                <p style="text-align:center">A JavaScript application that will display the age
+                     of the user in terms of number of years and months after entering the month, 
+                     the day, and the year when the user was born.</p><br>
+                <label>&nbsp;&nbsp;Month</label>
+                <input type="text" id="birth_month"></input><br><br>
+                <label>&nbsp;&nbsp;Day</label>
+                <input type="text" id="birth_day"></input><br><br>
+                <label>&nbsp;&nbsp;Year</label>
+                <input type="text" id="birth_year"></input><br><br>
+    
+                <button onclick="myFunction()" class="button">Calculate My Age</button>
+                <br><br>
+    
+                <p id="current_date"></p>
+                <p id="birth_date"></p>
+                <p id="age"></p>
+                <br>
+            </div>
+        </div>
+    </div>
+<script language= "JavaScript">
+    function myFunction(){
+        var current_time = new Date();
+	
+        var current_year1 = current_time.getFullYear();
+        var current_month1 = current_time.getMonth();
+        var current_day1 = current_time.getDay();
+
+        var current_month = parseInt(current_month1);
+        var current_day = parseInt(current_day1);
+        var current_year = parseInt(current_year1);
+
+        var birth_month1 = document.getElementById("birth_month").value;;
+        var birth_day1 = document.getElementById("birth_day").value;
+        var birth_year1 = document.getElementById("birth_year").value;
+    
+        var birth_month = parseInt(birth_month1);
+        var birth_day = parseInt(birth_day1);
+        var birth_year = parseInt(birth_year1);
+  
+        var checker, leapyear;
+    
+        //To determine whether the birth year is leap year or not
+        if (((birth_year % 4 == 0) && (birth_year % 100 != 0)) || (birth_year % 400 == 0)){
+            leapyear = true;
+        }else{
+            leapyear = false;
+            }
+        
+        //To test whether the birthday is valid or not
+        if (birth_year <= 0 || birth_month <= 0 || birth_month > 12 || birth_day <= 0 || birth_day > 31 || 
+            (leapyear == false && birth_month == 2 && birth_day > 28) || (leapyear == true && birth_month == 2 && birth_day > 29)
+            ||((birth_month == 4 || birth_month == 6 || birth_month == 9 || birth_month == 11) && birth_day > 30)){
+            checker = false;
+        }
+        else{
+            checker = true;
+        }
+
+        if(checker){
+            if (current_day < birth_day){
+                current_month -= 1;
+            }
+
+            if (current_month < birth_month){
+                current_month += 12;
+                current_year -= 1;
+            }
+
+            var age_year = current_year - birth_year;
+            var age_month = current_month - birth_month;
+
+            document.getElementById("current_date").innerHTML = ("Current date: " + current_month + "-" + current_day + "-" + current_year);
+            document.getElementById("birth_date").innerHTML = ("Your birthday is: " + birth_month + "-" + birth_day + "-" + birth_year);
+            document.getElementById("age").innerHTML = ("Your age is: " + age_year + "year/s and " + age_month + "month/s old");
+        }else{
+            alert("Try Again. Please enter a valid input");
+        }
+    }
+</script>
+</body>
+</html>
